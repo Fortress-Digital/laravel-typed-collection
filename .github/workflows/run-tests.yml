@@ -10,7 +10,7 @@ jobs:
       matrix:
         php: [8.1]
 
-    name: Unit tests
+    name: Runs tests
 
     steps:
       - name: Checkout code

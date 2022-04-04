@@ -5,12 +5,8 @@ on: ['push']
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [8.1]
 
-    name: Unit tests
+    name: Runs phpcs
 
     steps:
       - name: Checkout code
