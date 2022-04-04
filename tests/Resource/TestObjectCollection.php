@@ -2,9 +2,9 @@
 
 namespace Fortress\TypeCollection\Tests\Resource;
 
-use Fortress\TypeCollection\AbstractGenericCollection;
+use Fortress\TypeCollection\AbstractTypedCollection;
 
-class TestObjectCollection extends AbstractGenericCollection
+class TestObjectCollection extends AbstractTypedCollection
 {
     protected string $type = TestObject::class;
 }

@@ -2,9 +2,9 @@
 
 namespace Fortress\TypeCollection\Tests\Resource;
 
-use Fortress\TypeCollection\AbstractGenericCollection;
+use Fortress\TypeCollection\AbstractTypedCollection;
 
-class TestNumberCollection extends AbstractGenericCollection
+class TestNumberCollection extends AbstractTypedCollection
 {
     protected string $type = 'number';
 }

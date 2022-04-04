@@ -13,7 +13,7 @@ use Fortress\TypeCollection\Tests\Resource\TestObjectCollection;
 use Fortress\TypeCollection\Tests\Resource\TestStringCollection;
 use PHPUnit\Framework\TestCase;
 
-class AbstractGenericCollectionTest extends TestCase
+class AbstractTypedCollectionTest extends TestCase
 {
     public function testCollectionTypes(): void
     {

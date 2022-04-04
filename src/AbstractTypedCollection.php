@@ -6,13 +6,12 @@ use Illuminate\Support\Collection;
 use UnexpectedValueException;
 
 use function in_array;
-use function is_array;
 use function is_float;
 use function is_integer;
 use function is_numeric;
 use function is_string;
 
-abstract class AbstractGenericCollection extends Collection
+abstract class AbstractTypedCollection extends Collection
 {
     protected string $type;
 
@@ -28,7 +27,7 @@ abstract class AbstractGenericCollection extends Collection
     ];
 
     /**
-     * AbstractGenericCollection constructor.
+     * AbstractTypedCollection constructor.
      *
      * @param array $items
      */

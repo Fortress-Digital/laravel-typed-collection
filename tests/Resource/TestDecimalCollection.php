@@ -2,9 +2,9 @@
 
 namespace Fortress\TypeCollection\Tests\Resource;
 
-use Fortress\TypeCollection\AbstractGenericCollection;
+use Fortress\TypeCollection\AbstractTypedCollection;
 
-class TestDecimalCollection extends AbstractGenericCollection
+class TestDecimalCollection extends AbstractTypedCollection
 {
     protected string $type = 'decimal';
 }
