@@ -1,0 +1,29 @@
+{
+    "name": "fortress/laravel-typed-collection",
+    "description": "Extension to Laravel Collections to allow for creation of collections of values that conform to a specified type",
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.1"
+    },
+    "license": "MIT",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "authors": [
+        {
+            "name": "Paul Crashley",
+            "email": "paulcrashley@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Fortress\\TypeCollection\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fortress\\TypeCollection\\Tests\\": "tests"
+        }
+    }
+}
