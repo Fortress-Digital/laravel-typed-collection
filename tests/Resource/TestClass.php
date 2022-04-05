@@ -2,6 +2,6 @@
 
 namespace Fortress\TypeCollection\Tests\Resource;
 
-class TestObject
+class TestClass
 {
 }

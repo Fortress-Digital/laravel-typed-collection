@@ -5,26 +5,17 @@ namespace Fortress\TypeCollection;
 use Illuminate\Support\Collection;
 use UnexpectedValueException;
 
-use function in_array;
+use function is_array;
 use function is_float;
 use function is_integer;
 use function is_numeric;
+use function is_object;
 use function is_string;
+use function strtolower;
 
-abstract class AbstractTypedCollection extends Collection
+abstract class TypedCollection extends Collection
 {
     protected string $type;
-
-    private array $scalarTypes = [
-        'decimal',
-        'float',
-        'integer',
-        'int',
-        'number',
-        'numeric',
-        'string',
-        'text',
-    ];
 
     /**
      * AbstractTypedCollection constructor.
@@ -84,24 +75,23 @@ abstract class AbstractTypedCollection extends Collection
 
     protected function acceptsType(mixed $value): bool
     {
-        if (in_array($this->type, $this->scalarTypes)) {
-            if ($this->type === 'decimal' || $this->type === 'float') {
-                return is_float($value);
-            }
+        return match (strtolower($this->type)) {
+            'integer', 'int' => is_integer($value),
+            'numeric', 'number' => is_numeric($value),
+            'float', 'double', 'decimal' => is_float($value),
+            'string', 'text' => is_string($value),
+            'object' => is_object($value),
+            'array' => is_array($value),
+            'json' => (function () use ($value) {
+                try {
+                    json_decode($value, true, 512, JSON_THROW_ON_ERROR);
+                } catch (\Throwable) {
+                    return false;
+                }
 
-            if ($this->type === 'int' || $this->type === 'integer') {
-                return is_integer($value);
-            }
-
-            if ($this->type === 'number' || $this->type === 'numeric') {
-                return is_numeric($value);
-            }
-
-            if ($this->type === 'string' || $this->type === 'text') {
-                return is_string($value);
-            }
-        }
-
-        return $value instanceof $this->type;
+                return true;
+            })(),
+            default => $value instanceof $this->type,
+        };
     }
 }

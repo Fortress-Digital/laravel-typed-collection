@@ -4,7 +4,7 @@ namespace Fortress\TypeCollection\Tests\Resource;
 
 use Fortress\TypeCollection\TypedCollection;
 
-class TestDecimalCollection extends TypedCollection
+class TestClassCollection extends TypedCollection
 {
-    protected string $type = 'decimal';
+    protected string $type = TestClass::class;
 }
