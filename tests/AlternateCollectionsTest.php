@@ -22,6 +22,4 @@ class AlternateCollectionsTest extends TestCase
         $this->assertEquals(['test', 'string'], (new TestTextCollection(['test', 'string']))->all());
         $this->assertEquals([new TestClass()], (new TestClassCollection([new TestClass()]))->all());
     }
-    
-    
 }
