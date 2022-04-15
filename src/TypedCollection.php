@@ -2,6 +2,7 @@
 
 namespace Fortress\TypeCollection;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use UnexpectedValueException;
 
@@ -71,6 +72,25 @@ abstract class TypedCollection extends Collection
         $this->validateValue($item);
 
         return parent::add($item);
+    }
+
+    final public function prepend($value, $key = null): static
+    {
+        $this->validateValue($value);
+
+        $this->items = match ($key) {
+            null => Arr::prepend($this->items, $value),
+            default => Arr::prepend($this->items, $value, $key)
+        };
+
+        return $this;
+    }
+
+    final public function offsetSet(mixed $key, mixed $value): void
+    {
+        $this->validateValue($value);
+
+        parent::offsetSet($key, $value);
     }
 
     protected function acceptsType(mixed $value): bool
