@@ -2,10 +2,10 @@
 
 namespace Fortress\TypeCollection;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use UnexpectedValueException;
 
+use function func_get_args;
 use function is_array;
 use function is_float;
 use function is_integer;
@@ -78,12 +78,7 @@ abstract class TypedCollection extends Collection
     {
         $this->validateValue($value);
 
-        $this->items = match ($key) {
-            null => Arr::prepend($this->items, $value),
-            default => Arr::prepend($this->items, $value, $key)
-        };
-
-        return $this;
+        return parent::prepend(...func_get_args());
     }
 
     final public function offsetSet(mixed $key, mixed $value): void
