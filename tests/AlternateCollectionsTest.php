@@ -6,8 +6,6 @@ use Fortress\TypeCollection\Tests\Resource\TestDecimalCollection;
 use Fortress\TypeCollection\Tests\Resource\TestDoubleCollection;
 use Fortress\TypeCollection\Tests\Resource\TestIntCollection;
 use Fortress\TypeCollection\Tests\Resource\TestNumberCollection;
-use Fortress\TypeCollection\Tests\Resource\TestClass;
-use Fortress\TypeCollection\Tests\Resource\TestClassCollection;
 use Fortress\TypeCollection\Tests\Resource\TestTextCollection;
 use PHPUnit\Framework\TestCase;
 
@@ -20,6 +18,5 @@ class AlternateCollectionsTest extends TestCase
         $this->assertEquals([1, 2], (new TestIntCollection([1, 2]))->all());
         $this->assertEquals(['1', '2'], (new TestNumberCollection(['1', '2']))->all());
         $this->assertEquals(['test', 'string'], (new TestTextCollection(['test', 'string']))->all());
-        $this->assertEquals([new TestClass()], (new TestClassCollection([new TestClass()]))->all());
     }
 }
