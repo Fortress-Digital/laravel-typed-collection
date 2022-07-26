@@ -93,7 +93,9 @@ abstract class TypedCollection extends Collection
 
     final public function toArray(): array
     {
-        return $this->all();
+        return $this->collect()->map(function ($value) {
+            return $value instanceof Arrayable ? $value->toArray() : $value;
+        })->all();
     }
 
     protected function acceptsType(mixed $value): bool
