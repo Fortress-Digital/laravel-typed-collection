@@ -2,6 +2,8 @@
 
 namespace Fortress\TypeCollection;
 
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use UnexpectedValueException;
 
@@ -43,8 +45,9 @@ abstract class TypedCollection extends Collection
     {
         if (!$this->acceptsType($value)) {
             throw new UnexpectedValueException(sprintf(
-                "Invalid value type passed to %s",
-                get_class($this)
+                "Invalid value type passed to %s, %s given",
+                get_class($this),
+                get_debug_type($value)
             ));
         }
     }
@@ -86,6 +89,11 @@ abstract class TypedCollection extends Collection
         $this->validateValue($value);
 
         parent::offsetSet($key, $value);
+    }
+
+    final public function toArray(): array
+    {
+        return $this->all();
     }
 
     protected function acceptsType(mixed $value): bool
