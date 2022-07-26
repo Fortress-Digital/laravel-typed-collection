@@ -129,4 +129,9 @@ abstract class TypedCollectionTestCase extends TestCase
         $sut = new $this->collectionClass();
         $sut[] = $this->invalidValues[0];
     }
+
+    public function testToArray(): void
+    {
+        $this->assertEquals($this->validValues, (new $this->collectionClass($this->validValues))->toArray());
+    }
 }
