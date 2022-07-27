@@ -3,9 +3,8 @@
 namespace Fortress\TypeCollection;
 
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use UnexpectedValueException;
+use TypeError;
 
 use function func_get_args;
 use function is_array;
@@ -44,7 +43,7 @@ abstract class TypedCollection extends Collection
     private function validateValue(mixed $value): void
     {
         if (!$this->acceptsType($value)) {
-            throw new UnexpectedValueException(sprintf(
+            throw new TypeError(sprintf(
                 "Invalid value type passed to %s, %s given",
                 get_class($this),
                 get_debug_type($value)
