@@ -3,8 +3,8 @@
 namespace Fortress\TypeCollection\Tests;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 
 use function sprintf;
 
@@ -25,7 +25,7 @@ abstract class TypedCollectionTestCase extends TestCase
     
     public function testCollectionCreationWithInvalidType(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TypeError::class);
         $this->expectExceptionMessage(sprintf("Invalid value type passed to %s", $this->collectionClass));
 
         new $this->collectionClass($this->invalidValues);
@@ -47,7 +47,7 @@ abstract class TypedCollectionTestCase extends TestCase
 
     public function testPushWithInvalidType(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TypeError::class);
         $this->expectExceptionMessage(sprintf("Invalid value type passed to %s", $this->collectionClass));
 
         $sut = new $this->collectionClass();
@@ -66,7 +66,7 @@ abstract class TypedCollectionTestCase extends TestCase
 
     public function testPutWithInvalidType(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TypeError::class);
         $this->expectExceptionMessage(sprintf("Invalid value type passed to %s", $this->collectionClass));
 
         $sut = new $this->collectionClass();
@@ -84,7 +84,7 @@ abstract class TypedCollectionTestCase extends TestCase
 
     public function testAddWithInvalidType(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TypeError::class);
         $this->expectExceptionMessage(sprintf("Invalid value type passed to %s", $this->collectionClass));
 
         $sut = new $this->collectionClass();
@@ -105,7 +105,7 @@ abstract class TypedCollectionTestCase extends TestCase
 
     public function testPrependWithInvalidType(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TypeError::class);
         $this->expectExceptionMessage(sprintf("Invalid value type passed to %s", $this->collectionClass));
 
         $sut = new $this->collectionClass($this->validValues);
@@ -123,7 +123,7 @@ abstract class TypedCollectionTestCase extends TestCase
 
     public function testOffsetSetWithInvalidType(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(TypeError::class);
         $this->expectExceptionMessage(sprintf("Invalid value type passed to %s", $this->collectionClass));
 
         $sut = new $this->collectionClass();
