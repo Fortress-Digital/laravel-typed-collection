@@ -3,7 +3,7 @@
     "description": "Extension to Laravel Collections to allow for creation of collections of values that conform to a specified type",
     "require": {
         "php": "^8.1",
-        "illuminate/support": "^9.1"
+        "illuminate/support": "^9.1|^10.25"
     },
     "license": "MIT",
     "require-dev": {
